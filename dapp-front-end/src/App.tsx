@@ -1,31 +1,45 @@
+// App.tsx
 import React, { useState } from 'react';
+import axios from 'axios';
 import './App.css';
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-  // State to track the user's choice
   const [userChoice, setUserChoice] = useState<string | null>(null);
 
-  // Function to handle button clicks
-  const handleButtonClick = (choice: string) => {
+  const handleButtonClick = async (choice: string) => {
     setUserChoice(choice);
-    // You can add logic here to navigate to the next page or perform other actions based on the user's choice
+  
+    if (choice === 'option1') {
+      try {
+        // Log the request details for debugging
+        console.log('Sending Axios request...');
+        const response = await axios.post('http://localhost:5000/api/option1', { choice });
+        console.log('Axios response:', response.data.message);
+      } catch (error) {
+        console.error('Error sending data to Flask:', error);
+  
+        // Log specific Axios error details
+        if (axios.isAxiosError(error)) {
+          console.error('AxiosError details:', error.response);
+        }
+      }
+    }
   };
+  
 
   return (
     <div className="App">
-      <h1>Welcome to 10 Academy Certificate Site</h1>
-      <p>Please select if you are a tutor or a trainee :</p>
+      <h1>Welcome to Your App</h1>
+      <p>Please choose one of the following options:</p>
 
       <div>
-        <button onClick={() => handleButtonClick('option1')}>Tutor</button>
-        <button onClick={() => handleButtonClick('option2')}>Trainee</button>
+        <button onClick={() => handleButtonClick('option1')}>Option 1</button>
       </div>
 
       {userChoice && (
         <p>You chose: {userChoice}</p>
-        // You can render different components or navigate to different pages based on the user's choice
       )}
     </div>
   );
