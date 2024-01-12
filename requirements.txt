@@ -1,1 +1,9 @@
+# Regular dependencies
+requests
+python-dotenv
+py-algorand-sdk
+opencv-python
+openai
+
+# Development dependencies
 pytest
