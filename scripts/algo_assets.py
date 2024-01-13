@@ -1,6 +1,6 @@
-from algosdk import account, mnemonic
 from algosdk.v2client import algod
 from algosdk import transaction
+from algosdk import account, mnemonic, transaction
 
 class AlgoAssetManager:
     def __init__(self, algod_client: algod.AlgodClient):
@@ -47,7 +47,7 @@ class AlgoAssetManager:
         print(f"Result confirmed in round: {results['confirmed-round']}")
         return txid
 
-    def receive_asset(self, acct2: account.Account, created_asset: int):
+    def receive_asset(self, acct2, created_asset: int):
         sp = self.algod_client.suggested_params()
         optin_txn = transaction.AssetOptInTxn(
             sender=acct2.address, sp=sp, index=created_asset
