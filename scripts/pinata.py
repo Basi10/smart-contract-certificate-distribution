@@ -2,9 +2,8 @@ import requests
 import os
 from dotenv import load_dotenv
 
-def upload_to_pinata():
+def upload_to_pinata(file_path):
     load_dotenv()
-    file_path = '../certificate-generation/images/generated_certificate.jpg'
     url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
     jwt_token = os.getenv("PINATA_API_KEY")
     headers = {"Authorization": f"Bearer {jwt_token}"}
