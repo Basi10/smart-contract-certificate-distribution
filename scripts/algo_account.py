@@ -19,13 +19,6 @@ class AlgorandAccountManager:
         private_key, address = account.generate_account()
         mnemonic_phrase = mnemonic.from_private_key(private_key)
 
-        # In a production environment, you should securely store the private key and mnemonic.
-        # Avoid printing or logging sensitive information.
-        # For demonstration purposes, we will print the address.
-        print(f"Address: {address}")
-        # Do not print or log the private key and mnemonic in a production environment.
-        # Instead, securely store them using appropriate mechanisms.
-
         return private_key, address, mnemonic_phrase
 
     def get_account_info(algod_address: str, algod_token: str, account_address: str) -> Dict[str, Any]:
