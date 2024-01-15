@@ -13,8 +13,8 @@ function NavBar() {
     <div className="container">
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Navbar
+        <a className="navbar-brand" href="/">
+          10 Academy
         </a>
         <button
           className="navbar-toggler"
@@ -35,7 +35,7 @@ function NavBar() {
                 href="#"
                 onClick={() => handleNavLinkClick('home')}
               >
-                Home
+                Create Certificate
               </a>
             </li>
             <li className={`nav-item ${activeLink === 'features' ? 'active' : ''}`}>
@@ -44,7 +44,7 @@ function NavBar() {
                 href="#"
                 onClick={() => handleNavLinkClick('features')}
               >
-                Features
+                Requests
               </a>
             </li>
             <li className={`nav-item ${activeLink === 'pricing' ? 'active' : ''}`}>
@@ -53,7 +53,7 @@ function NavBar() {
                 href="#"
                 onClick={() => handleNavLinkClick('pricing')}
               >
-                Pricing
+                Revoke
               </a>
             </li>
           </ul>
