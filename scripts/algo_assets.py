@@ -47,12 +47,12 @@ class AlgoAssetManager:
         print(f"Result confirmed in round: {results['confirmed-round']}")
         return txid
 
-    def receive_asset(self, acct2, created_asset: int):
+    def receive_asset(self, address, privatekey, created_asset: int):
         sp = self.algod_client.suggested_params()
         optin_txn = transaction.AssetOptInTxn(
-            sender=acct2.address, sp=sp, index=created_asset
+            sender=address, sp=sp, index=created_asset
         )
-        signed_optin_txn = optin_txn.sign(acct2.private_key)
+        signed_optin_txn = optin_txn.sign(privatekey)
         txid = self.algod_client.send_transaction(signed_optin_txn)
         print(f"Sent opt in transaction with txid: {txid}")
         results = transaction.wait_for_confirmation(self.algod_client, txid, 4)
