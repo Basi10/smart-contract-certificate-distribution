@@ -1,14 +1,17 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
 
 interface FormData {
-  inputValue: string;
+  inputValue1: string;
+  inputValue2: string;
+  inputValue3: string;
 }
 
 function Student() {
   const [formData, setFormData] = useState<FormData>({
-    inputValue: '',
+    inputValue1: '',
+    inputValue2: '',
+    inputValue3: '',
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +24,11 @@ function Student() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Send formData to the backend here
-    console.log('Form data submitted:', formData);
+    // Access the name value from formData
+    const { inputValue1 } = formData;
+
+    // Redirect to the Features page with the entered name
+    window.location.href = `/tutor?name=${inputValue1}`;
   };
 
   return (
@@ -33,17 +39,45 @@ function Student() {
       <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
         <h2 className="mb-4">Student Page - Hello World!</h2>
         <form onSubmit={handleSubmit} className="d-flex flex-column align-items-start">
-          <div className="form-group d-flex">
-            <label htmlFor="inputValue" className="mr-2">Input Label:</label>
+          {/* Form 1 */}
+          <div className="form-group d-flex mt-4">
+            <label htmlFor="inputValue1" className="mr-2">Name:</label>
             <input
               type="text"
               className="form-control"
-              id="inputValue"
-              name="inputValue"
-              value={formData.inputValue}
+              id="inputValue1"
+              name="inputValue1"
+              value={formData.inputValue1}
               onChange={handleChange}
             />
           </div>
+
+          {/* Form 2 */}
+          <div className="form-group d-flex mt-4">
+            <label htmlFor="inputValue2" className="mr-2">Asset id:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="inputValue2"
+              name="inputValue2"
+              value={formData.inputValue2}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Form 3 */}
+          <div className="form-group d-flex mt-4">
+            <label htmlFor="inputValue3" className="mr-2">Private Key:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="inputValue3"
+              name="inputValue3"
+              value={formData.inputValue3}
+              onChange={handleChange}
+            />
+          </div>
+
           <div className="form-group ml-auto mt-2">
             <button type="submit" className="btn btn-dark">Submit</button>
           </div>
