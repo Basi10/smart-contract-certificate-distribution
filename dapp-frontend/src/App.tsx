@@ -9,18 +9,21 @@ import Student from './components/student';
 interface AppProps {}
 
 const Home: React.FC = () => (
-  <div className="App">
-    <h1>10 Academy</h1>
-    <p>Which one are you?</p>
-    <div>
-      <Link to="/tutor">
-        <button>Tutor</button>
-      </Link>
-      <Link to="/student">
-        <button>Student</button>
-      </Link>
+  <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="text-center">
+        <h1>10 Academy</h1>
+        <p>Which one are you?</p>
+        <div>
+          <Link to="/tutor">
+            <button className="btn btn-dark mr-2">Tutor</button>
+          </Link>
+          <Link to="/student">
+            <button className="btn btn-dark">Student</button>
+          </Link>
+        </div>
+      </div>
     </div>
-  </div>
+
 );
 
 
